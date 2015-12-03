@@ -12,6 +12,8 @@ public class BinSTree {
 		b.insert(4);
 		b.insert(7);
 		b.printTree(b.root);
+		boolean found = b.find(b.root, 9);
+		System.out.println(found);
 	}
 	
 	public void insert(int newVal){
@@ -83,5 +85,24 @@ public class BinSTree {
 			}
 		}
 			
+	}
+	
+	public boolean find(Node root, int key){
+		
+		// the traversal has reached the end 
+		// cannot find the passed element
+		if(root == null)
+			return false;
+
+		// recursively send the right subtree in the function
+		else if(root.getData() > key)
+			return find(root.left, key);
+		// recursively send the left subtree in the function
+		else if(root.getData() < key)
+			return find(root.right, key);
+		// the element has been found
+		else
+			return true;
+
 	}
 }
